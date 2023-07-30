@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include<math.h>
+int KTnguyento(int n)
+	{
+		if(n<2) return 0;
+		for(int i=2;i<=sqrt(n);i++)
+			{
+				if (n%i==0) return 0;
+			}
+		return 1;
+	}
+int main()
+	{
+		int n;
+		scanf("%d",&n);
+		int a[n+5];
+		int b[n+5];
+		for(int i=1;i<=n;i++)
+			{
+				scanf("%d",&a[i]);
+			}
+		int dem=0;
+		for(int i=1;i<=n;i++)
+			{
+				if(KTnguyento(a[i])==1) 
+					{
+						dem++;
+						b[dem]=a[i];
+					}
+			}
+		printf("%d ",dem);
+		for(int i=1;i<=dem;i++)
+			printf("%d ",b[i]);
+	}

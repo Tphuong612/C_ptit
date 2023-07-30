@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+void xoaXD(char c[])
+	{
+		size_t len=strlen(c);
+		for(int i=0;i<len;i++)
+			if (c[len-1]=='\n') c[len-1]='\0';
+	}
+void chuanhoa1(char c[])
+	{
+		c[0]=toupper(c[0]);
+		for(int i=1;i<strlen(c);i++)
+			c[i]=tolower(c[i]);
+	}
+void chuanhoa2(char c[])
+	{
+		for(int i=0;i<strlen (c);i++)
+			c[i]=toupper(c[i]);
+	}
+int main()
+	{
+		int t;
+		scanf("%d",&t);
+		getchar();
+		while(t--)
+			{
+				char c[1000], a[30][50];
+				fgets(c,1000,stdin);
+				xoaXD(c);
+				char *token=strtok(c," ");
+				int n=0;
+				while(token!=NULL)// tach cac tu trong xau vao dua vao mang a[]
+					{
+						strcpy(a[n],token);
+						n++;
+						token=strtok(NULL," ");
+					}
+				for(int i=1;i<n;i++)
+					{
+						chuanhoa1(a[i]);
+						if(i!=(n-1)) printf("%s ",a[i]);
+						else printf("%s, ",a[i]);
+					}
+				chuanhoa2(a[0]);
+				printf("%s\n",a[0]);
+			}
+	}
